@@ -20,13 +20,16 @@
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
+          
         />
+        <!-- stroke dùng để tô màu viền
+        stroke-width dùng để điều chỉnh độ dày của viền -->
       </svg>
         </div>
 
         <!-- Logo giữa -->
         <div class="logo">
-            <a href="#">LEESIN</a>
+            <a href="# ">LEESIN</a>
         </div>
 
         <!-- Tìm kiếm + icon -->
@@ -35,9 +38,9 @@
                 <input type="text" placeholder="Tìm kiếm sản phẩm..." />
                 <button>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            viewBox="0 0 24 24">
+            viewBox="0 0 24 24 ">
             <path
-              d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
+              d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z "
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
@@ -56,16 +59,16 @@
 
     <!-- MENU ẨN -->
     <nav class="side-menu" id="side-menu">
-        <a href="#">Home</a>
-        <a href="#">Product</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="# ">Home</a>
+        <a href="# ">Product</a>
+        <a href="# ">About</a>
+        <a href="# ">Contact</a>
     </nav>
 
     <!-- LỚP PHỦ -->
     <div class="overlay" id="overlay"></div>
 
-    <div style="height:2000px; background:#fafafa;"></div>
+    <div style="height:2000px; background:#fafafa; "></div>
 
     <script>
         const hamburger = document.getElementById("hamburger");
@@ -75,6 +78,7 @@
         hamburger.addEventListener("click", () => {
             sideMenu.classList.toggle("active");
             overlay.classList.toggle("active");
+            // Toggle lớp active để hiển thị menu và overlay
         });
 
         overlay.addEventListener("click", () => {
