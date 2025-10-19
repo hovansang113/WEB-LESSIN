@@ -70,20 +70,24 @@
 
     <div style="height:2000px; background:#fafafa; "></div>
 
+
     <script>
         const hamburger = document.getElementById("hamburger");
         const sideMenu = document.getElementById("side-menu");
         const overlay = document.getElementById("overlay");
+        // Lấy các phần tử cần thiết
 
         hamburger.addEventListener("click", () => {
             sideMenu.classList.toggle("active");
             overlay.classList.toggle("active");
-            // Toggle lớp active để hiển thị menu và overlay
+            // Toggle lớp active để hiển thị menu và overlay để che phần còn lại
         });
 
         overlay.addEventListener("click", () => {
             sideMenu.classList.remove("active");
             overlay.classList.remove("active");
+            x
+            // Ẩn menu và overlay khi nhấp vào overlay
         });
     </script>
 </body>

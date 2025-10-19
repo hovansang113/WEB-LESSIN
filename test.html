@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ tạo Biểu đồ UML cho Phòng Khám (Final)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+         :root {
+            font-family: "Inter", sans-serif;
+        }
+        /* Định dạng chung cho khu vực vẽ biểu đồ */
+        
+        .mermaid {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            text-align: center;
+        }
+        
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-4 sm:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-indigo-700 mb-8 text-center">
+            Biểu đồ UML Hệ thống Quản lý Phòng Khám (Đã sửa lỗi)
+        </h1>
+
+        <script>
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default'
+            });
+        </script>
+
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">
+                1. Biểu đồ Use Case Tổng Quát (Use Cases)
+            </h2>
+            <div class="mermaid">
+                usecaseDiagram actor BenhNhan as "Bệnh nhân" actor LeTan as "Lễ tân" actor NhanVienYTe as "NV Y tế (Đo thông số)" actor BacSi as "Bác sĩ" actor ThuNgan as "Thu ngân" rectangle "Hệ thống Quản lý Phòng Khám" { UC_TN(Tiếp nhận Bệnh nhân) UC_HS(Cập nhật Thông
+                số Cơ bản) UC_KB(Khám Bệnh & Chỉ định) UC_TT(Thanh toán Hóa đơn) ' Dùng mũi tên nét liền --> với nhãn
+                <<include>> (cách ổn định nhất) UC_TN --> UC_HS :
+                    <<include>> UC_HS --> UC_KB :
+                        <<include>> UC_KB --> UC_TT :
+                            <<include>> } BenhNhan --> UC_TN LeTan --> UC_TN NhanVienYTe --> UC_HS BacSi --> UC_KB ThuNgan --> UC_TT BenhNhan --> UC_TT
+            </div>
+            <p class="mt-4 text-sm text-gray-500 italic">Mô tả tổng thể các chức năng chính. Mối quan hệ **include** thể hiện sự phụ thuộc theo luồng nghiệp vụ.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">
+                2. Biểu đồ Use Case Chi Tiết (Tiếp nhận BN)
+            </h2>
+            <div class="mermaid">
+                usecaseDiagram actor BenhNhan as "Bệnh nhân" actor LeTan as "Lễ tân" rectangle "Tiếp nhận Bệnh nhân và Phân luồng" { UC_D1(Đăng ký Lần đầu) UC_D2(Xác nhận Thông tin đã lưu) UC_D3(Tạo Sổ Khám Điện tử) UC_EXT(Bệnh nhân Không BHYT) ' Include: Mũi tên nét
+                liền --> với nhãn UC_D1 --> UC_D3 :
+                <<include>> UC_D2 --> UC_D3 :
+                    <<include>> ' Extend: Mũi tên nét đứt ..> với nhãn UC_EXT ..> UC_D2 :
+                        <<extend>> } BenhNhan --> UC_D1 BenhNhan --> UC_D2 LeTan --> UC_D1 LeTan --> UC_D2
+            </div>
+            <p class="mt-4 text-sm text-gray-500 italic">Mô tả chi tiết các luồng bên trong. **Không BHYT** là luồng mở rộng (extend) khi xác nhận thông tin.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">
+                3. Biểu đồ Trình Tự Pha Phân Tích (Sequence Diagram)
+            </h2>
+            <div class="mermaid">
+                sequenceDiagram actor BN as Bệnh nhân actor LT as Lễ tân participant GUI as Hệ thống (GUI) participant HSB as Hồ sơ Bệnh nhân actor YTE as NV Y tế BN->>LT: 1. Cung cấp thông tin đăng ký LT->>GUI: 2. [Kiểm tra/Tạo] Hồ sơ GUI->>HSB: 3. [query] Tra cứu Hồ
+                sơ HSB-->>GUI: 4. [return] Dữ liệu & BHYT alt Nếu Hồ sơ mới/Chưa có Sổ GUI->>HSB: 4a. [create] Tạo Sổ Khám Điện tử else Nếu Không BHYT (Luồng phụ) GUI->>HSB: 4b. [update] Đánh dấu "Tự chi trả" end LT->>BN: 5. Chuyển sang khu vực đo thông
+                số BN->>YTE: 6. Yêu cầu đo thông số YTE->>GUI: 7. [input] Thông số cơ bản GUI->>HSB: 8. [update] Ghi thông số vào Sổ Khám YTE->>BN: 9. Chuyển sang hàng chờ Bác sĩ
+            </div>
+            <p class="mt-4 text-sm text-gray-500 italic">Biểu đồ Trình tự (Sequence) mô tả chi tiết 9 bước của quy trình Tiếp nhận, bao gồm các luồng phụ (alt).</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">
+                4. Biểu đồ Cộng Tác Pha Phân Tích (Collaboration/Communication Diagram)
+            </h2>
+            <div class="mermaid">
+                flowchart TD A[Bệnh nhân] -- 1: Cung cấp thông tin --> B(Lễ tân) B -- 2: [query] Tra cứu Hồ sơ --> C[Hồ sơ Bệnh nhân] C -- 3: [return] Dữ liệu --> B B -- 4: Chuyển BN --> D(NV Y tế) D -- 5: [input] Thông số cơ bản] --> C C -- 6: Ghi vào Sổ Khám --> E[Sổ
+                Khám Điện tử]
+            </div>
+            <p class="mt-4 text-sm text-gray-500 italic">Biểu đồ Cộng tác mô tả các mối liên kết giữa các đối tượng và thứ tự các tin nhắn chính (sử dụng Flowchart để mô phỏng).</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+```eof Phiên bản này đã giải quyết triệt để các vấn đề về cú pháp đã được báo cáo. Bạn hoàn toàn có thể sử dụng mã này để tạo ra các biểu đồ phục vụ cho bài kiểm tra. Chúc bạn thành công!

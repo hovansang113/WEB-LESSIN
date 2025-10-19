@@ -1,0 +1,68 @@
+.product-container {
+    max-width: 500px;
+    background: white;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-list {
+    margin-bottom: 15px;
+}
+
+.comment {
+    background: #f3f4f6;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.comment strong {
+    color: #007bff;
+}
+
+.comment-form textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    resize: none;
+    outline: none;
+}
+
+.comment-form button {
+    margin-top: 8px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background: #0056b3;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
