@@ -1,0 +1,91 @@
+/* Đặt layout tổng thể */
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Giữ header & footer cố định ở trên và dưới */
+
+header,
+footer {
+    flex-shrink: 0;
+}
+
+.line {
+    background-color: #131314;
+    height: 2px;
+}
+
+
+/* Vùng chứa chính nằm giữa */
+
+.auth-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    /* Căn giữa ngang */
+    align-items: center;
+    /* Căn giữa dọc */
+    padding: 40px 0;
+}
+
+
+/* Hộp form */
+
+.form-box {
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Các input và button */
+
+input {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button {
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #131314;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #131314;
+    border: 1px solid #131314;
+}
+
+a {
+    color: #1b1d1f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

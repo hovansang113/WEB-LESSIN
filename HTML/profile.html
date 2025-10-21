@@ -2,22 +2,55 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hồ sơ khách hàng</title>
-    <link rel="stylesheet" href="../CSS/profile.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang hồ sơ</title>
+    <link rel="stylesheet" href="../CSS/profile.css" />
 </head>
 
 <body>
     <div class="profile-container">
-        <h2>Hồ sơ khách hàng</h2>
+        <h2>Thông tin hồ sơ</h2>
 
-        <div id="profileInfo" class="profile-display">
-            <!-- Thông tin sẽ được JS đổ vào đây -->
+        <div id="profileInfo" class="profile-info">
+            <!-- Thông tin người dùng sẽ được load bằng JS -->
         </div>
 
         <div class="btn-group">
-            <button onclick="logout()">Đăng xuất</button>
+            <button id="updateBtn">Cập nhật hồ sơ</button>
+            <button id="logoutBtn">Đăng xuất</button>
+        </div>
+
+        <!-- Form cập nhật hồ sơ (ẩn mặc định) -->
+        <div id="updateForm" class="update-profile">
+            <h3>Cập nhật hồ sơ cá nhân</h3>
+
+            <div class="form-group">
+                <label for="fullName">Họ và tên</label>
+                <input type="text" id="fullName" placeholder="Nhập họ tên..." />
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Ngày sinh</label>
+                <input type="date" id="dob" />
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Giới tính</label>
+                <select id="gender">
+          <option value="">-- Chọn giới tính --</option>
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+          <option value="Khác">Khác</option>
+        </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="address" placeholder="Nhập địa chỉ..." />
+            </div>
+
+            <button id="saveBtn" class="save-btn">Lưu hồ sơ</button>
         </div>
     </div>
 
